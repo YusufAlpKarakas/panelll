@@ -430,6 +430,54 @@ app.get('/kitap-detay/:id', (req, res) => {
 
 
 // Soruyu eklemek için POST isteği
+// app.post('/sorular', upload.single('image'), (req, res) => {
+//   const data = req.body;
+//   const resim_url = req.file ? `/uploads/${req.file.filename}` : null;
+
+//   // Zorunlu alan kontrolü
+//   if (!data.soru_metni || !data.dogru_cevap) {
+//     return res.status(400).json({ error: "Soru metni ve doğru cevap zorunludur." });
+//   }
+
+//   const query = `
+//     INSERT INTO sorular (
+//       soru_metni, resim_url, resim_aciklama, onerge_metni, onbilgi,
+//       sik_A, sik_A_resim, sik_B, sik_B_resim, sik_C, sik_C_resim,
+//       sik_D, sik_D_resim, sik_E, sik_E_resim, dogru_cevap,
+//       kitap_id, unite, konu
+//     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+//   `;
+
+//   const values = [
+//     data.soru_metni,
+//     resim_url || null,
+//     data.resim_aciklama || null,
+//     data.onerge_metni || null,
+//     data.onbilgi || null,
+//     data.sik_A || null,
+//     data.sik_A_resim || null,
+//     data.sik_B || null,
+//     data.sik_B_resim || null,
+//     data.sik_C || null,
+//     data.sik_C_resim || null,
+//     data.sik_D || null,
+//     data.sik_D_resim || null,
+//     data.sik_E || null,
+//     data.sik_E_resim || null,
+//     data.dogru_cevap,
+//     data.kitap_id || null,
+//     data.unite || null,
+//     data.konu || null
+//   ];
+
+//   connection.query(query, values, (err, result) => {
+//     if (err) {
+//       console.error('Soru eklenirken hata:', err);
+//       return res.status(500).send('Soru eklenirken hata oluştu.');
+//     }
+//     res.status(200).json({ message: 'Soru başarıyla eklendi.' });
+//   });
+// });
 app.post('/sorular', upload.single('image'), (req, res) => {
   const data = req.body;
   const resim_url = req.file ? `/uploads/${req.file.filename}` : null;
@@ -450,7 +498,7 @@ app.post('/sorular', upload.single('image'), (req, res) => {
 
   const values = [
     data.soru_metni,
-    resim_url || null,
+    resim_url,
     data.resim_aciklama || null,
     data.onerge_metni || null,
     data.onbilgi || null,
@@ -467,7 +515,7 @@ app.post('/sorular', upload.single('image'), (req, res) => {
     data.dogru_cevap,
     data.kitap_id || null,
     data.unite || null,
-    data.konu || null
+    data.konu || null,
   ];
 
   connection.query(query, values, (err, result) => {
@@ -478,6 +526,7 @@ app.post('/sorular', upload.single('image'), (req, res) => {
     res.status(200).json({ message: 'Soru başarıyla eklendi.' });
   });
 });
+
 
 
 app.post('/soru-eklemeyi-bitir', (req, res) => {
