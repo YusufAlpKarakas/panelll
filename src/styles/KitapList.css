@@ -1,0 +1,88 @@
+.kitap-listesi-container {
+    background-color: #d3d3d3;
+    padding: 30px;
+}
+
+.kitap-baslik {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+    background-color: #ffcccc;
+    padding: 10px;
+    color: #333;
+}
+
+.kitap-listesi {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 10fr));
+    gap: 25px;
+    list-style: none;
+    padding: 0px 100px;
+}
+
+.kitap-karti {
+    background-color: #ffcccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.kitap-karti:hover {
+    transform: scale(1.02);
+}
+
+.kitap-resim {
+    width: 200px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.kitap-detaylar {
+    font-size: 14px;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.kitap-butonlar {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.btn-duzenle {
+    padding: 6px 14px;
+    background-color: #90ee90;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-duzenle:hover {
+    background-color: #72d572;
+}
+
+.btn-sil {
+    padding: 6px 14px;
+    background-color: #f08080;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-sil:hover {
+    background-color: #d9534f;
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/KitapDetay.css';
 
 const KitapDetay = () => {
   const { id } = useParams();
@@ -105,138 +106,306 @@ const KitapDetay = () => {
   };
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl mb-4">Kitap Güncelle</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label>Kitap İsmi:</label>
-          <input
-            type="text"
-            value={isim}
-            onChange={(e) => setIsim(e.target.value)}
-            className="border p-2 w-full"
-            required
-          />
-        </div>
+    // <div className="p-4">
+    //   <h2 className="text-xl mb-4">Kitap Güncelle</h2>
+    //   <form onSubmit={handleSubmit} className="space-y-4">
+    //     <div>
+    //       <label>Kitap İsmi:</label>
+    //       <input
+    //         type="text"
+    //         value={isim}
+    //         onChange={(e) => setIsim(e.target.value)}
+    //         className="border p-2 w-full"
+    //         required
+    //       />
+    //     </div>
 
-        <div>
-          <label>Ders Adı:</label>
-          <select
-            value={dersAdi}
-            onChange={(e) => setDersAdi(e.target.value)}
-            className="border p-2 w-full"
-            required
-          >
-            <option value="">Ders Seçin</option>
-            <option value="Matematik">Matematik</option>
-            <option value="Türkçe">Türkçe</option>
-            <option value="Kimya">Kimya</option>
-            <option value="Fizik">Fizik</option>
-            <option value="Biyoloji">Biyoloji</option>
-          </select>
-        </div>
+    //     <div>
+    //       <label>Ders Adı:</label>
+    //       <select
+    //         value={dersAdi}
+    //         onChange={(e) => setDersAdi(e.target.value)}
+    //         className="border p-2 w-full"
+    //         required
+    //       >
+    //         <option value="">Ders Seçin</option>
+    //         <option value="Matematik">Matematik</option>
+    //         <option value="Türkçe">Türkçe</option>
+    //         <option value="Kimya">Kimya</option>
+    //         <option value="Fizik">Fizik</option>
+    //         <option value="Biyoloji">Biyoloji</option>
+    //       </select>
+    //     </div>
 
-        <div>
-          <label>Kategori:</label>
-          <select
-            value={kategori}
-            onChange={(e) => {
-              setKategori(e.target.value);
-              setSiniflar([]);
-            }}
-            className="border p-2 w-full"
-          >
-            <option value="tyt">TYT</option>
-            <option value="ayt">AYT</option>
-          </select>
-        </div>
+    //     <div>
+    //       <label>Kategori:</label>
+    //       <select
+    //         value={kategori}
+    //         onChange={(e) => {
+    //           setKategori(e.target.value);
+    //           setSiniflar([]);
+    //         }}
+    //         className="border p-2 w-full"
+    //       >
+    //         <option value="tyt">TYT</option>
+    //         <option value="ayt">AYT</option>
+    //       </select>
+    //     </div>
 
-        <div>
-          <label>Sınıf(lar):</label>
-          <div className="flex gap-4 flex-wrap">
-            {getSinifSecenekleri().map((s) => (
-              <label key={s} className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={siniflar.includes(s)}
-                  onChange={() => toggleSinif(s)}
-                />
-                {s}. Sınıf
-              </label>
-            ))}
+    //     <div>
+    //       <label>Sınıf(lar):</label>
+    //       <div className="flex gap-4 flex-wrap">
+    //         {getSinifSecenekleri().map((s) => (
+    //           <label key={s} className="flex items-center gap-2">
+    //             <input
+    //               type="checkbox"
+    //               checked={siniflar.includes(s)}
+    //               onChange={() => toggleSinif(s)}
+    //             />
+    //             {s}. Sınıf
+    //           </label>
+    //         ))}
+    //       </div>
+    //     </div>
+
+    //     <div>
+    //       <label>Fiyat (₺):</label>
+    //       <input
+    //         type="number"
+    //         value={price}
+    //         onChange={handlePriceChange}
+    //         className="border p-2 w-full"
+    //         required
+    //       />
+    //     </div>
+
+    //     <div>
+    //       <label>İndirim (%):</label>
+    //       <input
+    //         type="number"
+    //         value={indirim}
+    //         onChange={handleIndirimChange}
+    //         className="border p-2 w-full"
+    //         min="0"
+    //         max="100"
+    //       />
+    //       {indirimFiyat && (
+    //         <p className="text-green-600 font-semibold mt-1">
+    //           İndirimli Fiyat: {indirimFiyat}₺
+    //         </p>
+    //       )}
+    //     </div>
+
+    //     <div>
+    //       <label>Yeni Görsel (İsteğe Bağlı):</label>
+    //       <input
+    //         type="file"
+    //         onChange={(e) => setImage(e.target.files[0])}
+    //         className="border p-2 w-full"
+    //       />
+    //       {mevcutImage && (
+    //         <div className="mt-2">
+    //           <p>Mevcut Görsel:</p>
+    //           <img
+    //             src={`http://localhost:3000/${mevcutImage}`}
+    //             alt="Kitap Görseli"
+    //             className="w-32 h-32 object-cover border"
+    //           />
+    //         </div>
+    //       )}
+    //     </div>
+
+    //     <button
+    //       type="submit"
+    //       className="bg-blue-600 text-white p-2 rounded w-full"
+    //     >
+    //       Güncelle
+    //     </button>
+    //   </form>
+
+    //   <div className="mt-8">
+    //     <h3 className="text-lg font-semibold mb-2">Üniteler</h3>
+    //     {uniteler.length === 0 ? (
+    //       <p>Bu kitaba ait ünite bulunmuyor.</p>
+    //     ) : (
+    //       <ul className="space-y-4">
+    //         {uniteler.map((unite) => (
+    //           <li key={unite.id} className="border p-3 rounded">
+    //             <p className="font-semibold">{unite.unite_adi}</p>
+    //             {unite.konular && unite.konular.length > 0 ? (
+    //               <ul className="list-disc list-inside mt-1 ml-4 text-sm text-blue-600">
+    //                 {unite.konular.map((konu, i) => (
+    //                   <li
+    //                     key={i}
+    //                     className="cursor-pointer hover:underline"
+    //                     onClick={() =>
+    //                       navigate(`/soru-ekle/${id}/${encodeURIComponent(unite.unite_adi)}/${encodeURIComponent(konu)}`)
+    //                     }
+    //                   >
+    //                     {konu}
+    //                   </li>
+    //                 ))}
+    //               </ul>
+    //             ) : (
+    //               <p className="text-sm text-gray-500">Bu üniteye ait konu yok.</p>
+    //             )}
+    //           </li>
+    //         ))}
+    //       </ul>
+    //     )}
+    //   </div>
+    // </div>
+
+
+    <>          <nav className="navbar">
+      <h1>YAKIN KİTAP-GÜNCELLEME</h1>
+    </nav>
+      <button
+        onClick={() => navigate(-1)}
+        style={{
+          marginBottom: '20px',
+          padding: '8px 16px',
+          backgroundColor: '#ffcccc',
+          border: 'none',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          fontWeight: 'bold'
+        }}
+      >
+        Geri
+      </button>
+      <div className="book-update-container">
+        <h2 className="title">Kitap Güncelle</h2>
+        <form onSubmit={handleSubmit} className="form">
+          <div className="form-group">
+            <label>Kitap İsmi:</label>
+            <input
+              type="text"
+              value={isim}
+              onChange={(e) => setIsim(e.target.value)}
+              required
+              className="input"
+            />
           </div>
-        </div>
 
-        <div>
-          <label>Fiyat (₺):</label>
-          <input
-            type="number"
-            value={price}
-            onChange={handlePriceChange}
-            className="border p-2 w-full"
-            required
-          />
-        </div>
+          <div className="form-group">
+            <label>Ders Adı:</label>
+            <select
+              value={dersAdi}
+              onChange={(e) => setDersAdi(e.target.value)}
+              required
+              className="input"
+            >
+              <option value="">Ders Seçin</option>
+              <option value="Matematik">Matematik</option>
+              <option value="Türkçe">Türkçe</option>
+              <option value="Kimya">Kimya</option>
+              <option value="Fizik">Fizik</option>
+              <option value="Biyoloji">Biyoloji</option>
+            </select>
+          </div>
 
-        <div>
-          <label>İndirim (%):</label>
-          <input
-            type="number"
-            value={indirim}
-            onChange={handleIndirimChange}
-            className="border p-2 w-full"
-            min="0"
-            max="100"
-          />
-          {indirimFiyat && (
-            <p className="text-green-600 font-semibold mt-1">
-              İndirimli Fiyat: {indirimFiyat}₺
-            </p>
-          )}
-        </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label>Kategori:</label>
+              <select
+                value={kategori}
+                onChange={(e) => {
+                  setKategori(e.target.value);
+                  setSiniflar([]);
+                }}
+                className="input"
+              >
+                <option value="tyt">TYT</option>
+                <option value="ayt">AYT</option>
+              </select>
+            </div>
 
-        <div>
-          <label>Yeni Görsel (İsteğe Bağlı):</label>
-          <input
-            type="file"
-            onChange={(e) => setImage(e.target.files[0])}
-            className="border p-2 w-full"
-          />
-          {mevcutImage && (
-            <div className="mt-2">
-              <p>Mevcut Görsel:</p>
-              <img
-                src={`http://localhost:3000/${mevcutImage}`}
-                alt="Kitap Görseli"
-                className="w-32 h-32 object-cover border"
+            <div className="form-group">
+              <label>Fiyat (₺):</label>
+              <input
+                type="number"
+                value={price}
+                onChange={handlePriceChange}
+                required
+                className="input"
               />
             </div>
-          )}
-        </div>
+          </div>
 
-        <button
-          type="submit"
-          className="bg-blue-600 text-white p-2 rounded w-full"
-        >
-          Güncelle
-        </button>
-      </form>
+          <div className="form-group">
+            <label>Sınıf(lar):</label>
+            <div className="checkbox-group">
+              {getSinifSecenekleri().map((s) => (
+                <label key={s} className="checkbox-label">
+                  <input
+                    type="checkbox"
+                    checked={siniflar.includes(s)}
+                    onChange={() => toggleSinif(s)}
+                  />
+                  {s}
+                </label>
+              ))}
+            </div>
+          </div>
 
-      <div className="mt-8">
-        <h3 className="text-lg font-semibold mb-2">Üniteler</h3>
+          <div className="form-group">
+            <label>İndirim (%):</label>
+            <input
+              type="number"
+              value={indirim}
+              onChange={handleIndirimChange}
+              min="0"
+              max="100"
+              className="input"
+            />
+            {indirimFiyat && (
+              <p className="discount-info">
+                İndirimli Fiyat: {indirimFiyat}₺
+              </p>
+            )}
+          </div>
+
+          <div className="form-group">
+            <label>Yeni Görsel (İsteğe Bağlı):</label>
+            <input
+              type="file"
+              onChange={(e) => setImage(e.target.files[0])}
+              className="input"
+            />
+            {mevcutImage && (
+              <div className="image-preview">
+                <p>Mevcut Görsel:</p>
+                <img
+                  src={`http://localhost:3000/${mevcutImage}`}
+                  alt="Kitap Görseli"
+                  className="kitap-image"
+                />
+              </div>
+            )}
+          </div>
+
+          <button type="submit" className="save-button">
+            Güncelle
+          </button>
+        </form>
+      </div>
+
+      <div className="uniteler-section">
+        <h3 className="uniteler-title">Üniteler</h3>
         {uniteler.length === 0 ? (
-          <p>Bu kitaba ait ünite bulunmuyor.</p>
+          <p className="uniteler-empty">Bu kitaba ait ünite bulunmuyor.</p>
         ) : (
-          <ul className="space-y-4">
+          <div className="uniteler-grid">
             {uniteler.map((unite) => (
-              <li key={unite.id} className="border p-3 rounded">
-                <p className="font-semibold">{unite.unite_adi}</p>
+              <div key={unite.id} className="unite-box">
+                <p className="unite-box-title">{unite.unite_adi}</p>
                 {unite.konular && unite.konular.length > 0 ? (
-                  <ul className="list-disc list-inside mt-1 ml-4 text-sm text-blue-600">
-                    {unite.konular.map((konu, i) => (
+                  <ul className="konu-list">
+                    {unite.konular.map((konu, index) => (
                       <li
-                        key={i}
-                        className="cursor-pointer hover:underline"
+                        key={index}
+                        className="konu-item"
                         onClick={() =>
                           navigate(`/soru-ekle/${id}/${encodeURIComponent(unite.unite_adi)}/${encodeURIComponent(konu)}`)
                         }
@@ -246,14 +415,26 @@ const KitapDetay = () => {
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-sm text-gray-500">Bu üniteye ait konu yok.</p>
+                  <p className="konu-empty">Bu üniteye ait konu yok.</p>
                 )}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
       </div>
-    </div>
+
+
+
+      <nav className="navbar" style={{ marginTop: '50px', height: '20px' }}>
+
+
+      </nav>
+
+    </>
+
+
+
+
   );
 };
 

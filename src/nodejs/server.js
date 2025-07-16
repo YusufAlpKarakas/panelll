@@ -6,6 +6,8 @@ const multer = require('multer');
 const path = require('path');
 const app = express();
 const port = 3000;
+const axios = require('axios');
+
 
 // MySQL bağlantısı
 const connection = mysql.createConnection({

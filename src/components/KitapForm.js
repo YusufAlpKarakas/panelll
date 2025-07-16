@@ -166,7 +166,7 @@ const KitapForm = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl mb-4">Kitap Ekle</h2>
+
 
       {!showDetails ? (
         // <form onSubmit={handleDevam} className="space-y-4">
