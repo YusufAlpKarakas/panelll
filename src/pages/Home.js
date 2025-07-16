@@ -88,21 +88,37 @@ export default Home;
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import HavaDurumu from "./HavaDurumu";
+import "../styles/Home.css";
 
 const Home = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <nav>
-        <h1>Yakın Kitap</h1>
+    // <div>
+    //   <nav>
+    //     <h1>Yakın Kitap</h1>
+    //   </nav>
+    //   <section>
+    //     <div>
+    //       <div onClick={() => navigate("/kitap-listesi")}>Kitaplar</div>
+    //       <div>Kod Oluştur</div>
+    //       <div onClick={() => navigate("/kitap-ekle")}>Kitap Ekle</div>
+    //     </div>
+    //   </section>
+    // </div>
+    <div className="container">
+      <nav className="navbar">
+        <h1>YAKIN KİTAP</h1>
       </nav>
-      <section>
-        <div>
-          <div onClick={() => navigate("/kitap-listesi")}>Kitaplar</div>
-          <div>Kod Oluştur</div>
-          <div onClick={() => navigate("/kitap-ekle")}>Kitap Ekle</div>
+
+      <section className="main">
+        <h2>Apotemi Yayınları</h2>
+        <div className="button-group">
+          <div onClick={() => navigate("/kitap-listesi")} className="card">Kitaplar</div>
+          <div className="card">Kod Oluştur</div>
+          <div onClick={() => navigate("/kitap-ekle")} className="card">Kitap Ekle</div>
         </div>
+        <button className="logout-btn">Çıkış</button>
       </section>
     </div>
   );

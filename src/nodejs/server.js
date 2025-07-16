@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mysql = require('mysql2');
-const multer = require('multer'); 
+const multer = require('multer');
 const path = require('path');
 const app = express();
 const port = 3000;
@@ -11,7 +11,7 @@ const port = 3000;
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'bordo613613',
+  password: '159357',
   database: 'test_db',
   port: 3306,
 });
@@ -581,7 +581,7 @@ app.post('/soru-eklemeyi-bitir', (req, res) => {
 // Soruları listele
 app.get('/sorular', (req, res) => {
   const query = 'SELECT * FROM sorular';
-  
+
   connection.query(query, (err, results) => {
     if (err) {
       return res.status(500).send('Veritabanından sorular alınırken hata oluştu.');
