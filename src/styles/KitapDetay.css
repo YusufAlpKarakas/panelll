@@ -1,0 +1,217 @@
+.book-update-container {
+    background-color: #dcdcdc;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    border-radius: 12px;
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 1rem;
+    color: #222;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.input {
+    padding: 0.6rem;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    background-color: #ffe4e1;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.discount-info {
+    margin-top: 0.5rem;
+    color: green;
+    font-weight: bold;
+}
+
+.image-preview {
+    margin-top: 0.5rem;
+}
+
+.kitap-image {
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+.save-button {
+    padding: 0.8rem;
+    background-color: #00ff66;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #000;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #00cc55;
+}
+
+
+.uniteler-container {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid #ffcccc;
+}
+
+.uniteler-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.no-unite {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+}
+
+.unite-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.unite-card {
+    background-color: #ffe4e1;
+    border: 1px solid #ffcccc;
+    border-radius: 10px;
+    padding: 1rem;
+}
+
+.unite-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0.5rem;
+}
+
+.konular-list {
+    list-style: inside disc;
+    padding-left: 1rem;
+    color: #0066cc;
+}
+
+.konu-item {
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 4px;
+    transition: text-decoration 0.2s;
+}
+
+.konu-item:hover {
+    text-decoration: underline;
+}
+
+.no-konu {
+    font-size: 13px;
+    color: #999;
+}
+
+/* ------------- üniteler */
+.uniteler-section {
+    margin-top: 2rem;
+    border-top: 2px solid #f8cdd0;
+    padding-top: 2rem;
+}
+
+.uniteler-title {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.uniteler-empty {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+.uniteler-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+.unite-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    margin: auto;
+    background-color: #ffe4e1;
+    border: 1px solid #ffcdd2;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.unite-box-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0.75rem;
+    color: #000;
+}
+
+.konu-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.konu-item {
+    font-size: 14px;
+    color: #007bff;
+    cursor: pointer;
+    margin-bottom: 6px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: background-color 0.2s, text-decoration 0.2s;
+}
+
+.konu-item:hover {
+    background-color: #fdecec;
+    text-decoration: underline;
+}
+
+.konu-empty {
+    font-size: 13px;
+    color: #999;
+}
