@@ -193,12 +193,12 @@ const SoruForm = () => {
     form.append('konu', konuAdi);
 
     // Dosyaları ekle (varsa)
-    if(formData.resim_url) form.append('image', formData.resim_url);
-    if(formData.sik_A_resim) form.append('sik_A_resim', formData.sik_A_resim);
-    if(formData.sik_B_resim) form.append('sik_B_resim', formData.sik_B_resim);
-    if(formData.sik_C_resim) form.append('sik_C_resim', formData.sik_C_resim);
-    if(formData.sik_D_resim) form.append('sik_D_resim', formData.sik_D_resim);
-    if(formData.sik_E_resim) form.append('sik_E_resim', formData.sik_E_resim);
+    if (formData.resim_url) form.append('image', formData.resim_url);
+    if (formData.sik_A_resim) form.append('sik_A_resim', formData.sik_A_resim);
+    if (formData.sik_B_resim) form.append('sik_B_resim', formData.sik_B_resim);
+    if (formData.sik_C_resim) form.append('sik_C_resim', formData.sik_C_resim);
+    if (formData.sik_D_resim) form.append('sik_D_resim', formData.sik_D_resim);
+    if (formData.sik_E_resim) form.append('sik_E_resim', formData.sik_E_resim);
 
     try {
       await axios.post('http://localhost:3000/sorular', form, {
@@ -211,61 +211,71 @@ const SoruForm = () => {
   };
 
   return (
-    <div className="form-container">
-      <h2>Soru Ekle</h2>
-      <p><strong>Kitap ID:</strong> {kitapId}</p>
-      <p><strong>Ünite:</strong> {uniteAdi}</p>
-      <p><strong>Konu:</strong> {konuAdi}</p>
+    <>
+      <nav className="navbar">
+        <h1>YAKIN KİTAP</h1>
+      </nav>
+      <div className="form-container">
 
-      <form onSubmit={handleSubmit}>
+        <h2>Soru Ekle</h2>
+        <p><strong>Kitap ID:</strong> {kitapId}</p>
+        <p><strong>Ünite:</strong> {uniteAdi}</p>
+        <p><strong>Konu:</strong> {konuAdi}</p>
 
-        <label>Soru Metni</label>
-        <textarea name="soru_metni" onChange={handleChange} required />
+        <form onSubmit={handleSubmit}>
 
-        <label>Resim Ekle</label>
-        <input type="file" accept="image/*" onChange={e => handleFileChange(e, 'resim_url')} />
+          <label>Soru Metni</label>
+          <textarea name="soru_metni" onChange={handleChange} required />
 
-        <label>Resim Açıklama</label>
-        <input name="resim_aciklama" onChange={handleChange} />
+          <label>Resim Ekle</label>
+          <input type="file" accept="image/*" onChange={e => handleFileChange(e, 'resim_url')} />
 
-        <label>Önerge Metni</label>
-        <input name="onerge_metni" onChange={handleChange} />
+          <label>Resim Açıklama</label>
+          <input name="resim_aciklama" onChange={handleChange} />
 
-        <label>Önbilgi</label>
-        <input name="onbilgi" onChange={handleChange} />
+          <label>Önerge Metni</label>
+          <input name="onerge_metni" onChange={handleChange} />
 
-        <hr />
+          <label>Önbilgi</label>
+          <input name="onbilgi" onChange={handleChange} />
 
-        {['A', 'B', 'C', 'D', 'E'].map(secenek => (
-          <div className="secenek-grup" key={secenek}>
-            <label>Şık {secenek}</label>
-            <input
-              name={`sik_${secenek}`}
-              placeholder={`Şık ${secenek}`}
-              onChange={handleChange}
-              required={['A', 'B', 'C', 'D'].includes(secenek)}
-            />
-            <input
-              type="file"
-              accept="image/*"
-              onChange={e => handleFileChange(e, `sik_${secenek}_resim`)}
-            />
-          </div>
-        ))}
+          <hr />
 
-        <label>Doğru Cevap</label>
-        <select name="dogru_cevap" required onChange={handleChange}>
-          <option value="">Seçiniz</option>
-          <option value="A">A</option>
-          <option value="B">B</option>
-          <option value="C">C</option>
-          <option value="D">D</option>
-          <option value="E">E</option>
-        </select>
+          {['A', 'B', 'C', 'D', 'E'].map(secenek => (
+            <div className="secenek-grup" key={secenek}>
+              <label>Şık {secenek}</label>
+              <input
+                name={`sik_${secenek}`}
+                placeholder={`Şık ${secenek}`}
+                onChange={handleChange}
+                required={['A', 'B', 'C', 'D'].includes(secenek)}
+              />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={e => handleFileChange(e, `sik_${secenek}_resim`)}
+              />
+            </div>
+          ))}
 
-        <button type="submit">Kaydet</button>
-      </form>
-    </div>
+          <label>Doğru Cevap</label>
+          <select name="dogru_cevap" required onChange={handleChange}>
+            <option value="">Seçiniz</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+          </select>
+
+          <button type="submit">Kaydet</button>
+        </form>
+      </div>
+      <nav className="navbar" style={{ marginTop: '50px', height: '20px' }}>
+
+
+      </nav>
+    </>
   );
 };
 

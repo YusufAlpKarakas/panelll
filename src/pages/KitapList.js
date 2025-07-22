@@ -156,80 +156,85 @@ const KitapList = () => {
     //     ))}
     //   </ul>
     // </div>
-    <div className="kitap-listesi-container">
-      <h1 className="kitap-baslik">YAKIN KİTAP</h1>
-      <button
-        onClick={() => navigate(-1)}
-        style={{
-          marginBottom: '20px',
-          padding: '8px 16px',
-          backgroundColor: '#ffcccc',
-          border: 'none',
-          borderRadius: '8px',
-          cursor: 'pointer',
-          fontWeight: 'bold'
-        }}
-      >
-        Geri
-      </button>
-      <ul className="kitap-listesi">
-        {books.map((kitap) => (
-          <li
-            key={kitap.id}
-            className="kitap-karti"
-            onClick={() => navigate(`/kitaplar/${kitap.id}`)}
-          >
+    <>
+      <nav className="navbar">
+        <h1>YAKIN KİTAP</h1>
+      </nav>
 
-            <div className="kitap-karti-flexbox" style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '10px',
-              backgroundColor: '#ffcccc',
-              // borderRadius: '8px',
-              // boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-              cursor: 'pointer',
-              gap: '20px'
-            }}>
+      <div className="kitap-listesi-container">
+        <button
+          onClick={() => navigate(-1)}
+          style={{
+            marginBottom: '20px',
+            padding: '8px 16px',
+            backgroundColor: '#ffcccc',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+            fontWeight: 'bold'
+          }}
+        >
+          Geri
+        </button>
+        <ul className="kitap-listesi">
+          {books.map((kitap) => (
+            <li
+              key={kitap.id}
+              className="kitap-karti"
+              onClick={() => navigate(`/kitaplar/${kitap.id}`)}
+            >
 
-              <img
-                src={`http://localhost:3000${kitap.image_url}`}
-                alt={kitap.isim}
-                className="kitap-resim"
-              />
+              <div className="kitap-karti-flexbox" style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                padding: '10px',
+                backgroundColor: '#ffcccc',
+                // borderRadius: '8px',
+                // boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                cursor: 'pointer',
+                gap: '20px'
+              }}>
 
-              <div className="sag-panel">
-                <div className="kitap-detaylar">
-                  <p><strong>Ad</strong> : {kitap.isim}</p>
-                  <p><strong>Ders</strong> : {kitap.ders_adi}</p>
-                  <p><strong>Sınıf</strong> : {kitap.sinif}</p>
-                  <p><strong>Soru Sayısı</strong> : {kitap.soru_sayisi || '-'}</p>
-                  <p><strong>Kategori</strong> : {kitap.kategori}</p>
-                  <p><strong>Fiyat</strong> : {kitap.price}₺</p>
-                </div>
-                <div className="kitap-butonlar">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigate(`/kitaplar/${kitap.id}`);
-                    }}
-                    className="btn-duzenle"
-                  >
-                    Düzenle
-                  </button>
-                  <button
-                    onClick={(e) => deleteBook(kitap.id, e)}
-                    className="btn-sil"
-                  >
-                    Sil
-                  </button>
+                <img
+                  src={`http://localhost:3000${kitap.image_url}`}
+                  alt={kitap.isim}
+                  className="kitap-resim"
+                />
+
+                <div className="sag-panel">
+                  <div className="kitap-detaylar">
+                    <p><strong>Ad</strong> : {kitap.isim}</p>
+                    <p><strong>Ders</strong> : {kitap.ders_adi}</p>
+                    <p><strong>Sınıf</strong> : {kitap.sinif}</p>
+                    <p><strong>Soru Sayısı</strong> : {kitap.soru_sayisi || '-'}</p>
+                    <p><strong>Kategori</strong> : {kitap.kategori}</p>
+                    <p><strong>Fiyat</strong> : {kitap.price}₺</p>
+                  </div>
+                  <div className="kitap-butonlar">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/kitaplar/${kitap.id}`);
+                      }}
+                      className="btn-duzenle"
+                    >
+                      Düzenle
+                    </button>
+                    <button
+                      onClick={(e) => deleteBook(kitap.id, e)}
+                      className="btn-sil"
+                    >
+                      Sil
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
 
 
   );

@@ -216,7 +216,7 @@ const KitapForm = () => {
           </nav>
           <div className="div-container">
 
-            <button className="geri-button" onClick={() => navigate(-1)}>Geri</button>
+            <button className="geri-button" onClick={() => navigate(-1)} >Geri</button>
 
 
 

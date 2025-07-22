@@ -264,6 +264,7 @@ const KitapDetay = () => {
         onClick={() => navigate(-1)}
         style={{
           marginBottom: '20px',
+          marginLeft: '20px',
           padding: '8px 16px',
           backgroundColor: '#ffcccc',
           border: 'none',
